@@ -362,7 +362,7 @@ O HAI IM game
                                 NO WAI, validationmessage R SMOOSH "You need to select a square with a " playacolor " piece!" MKAY
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
-                                YA RLY, VISIBLE SMOOSH "You selected target " AN targetpiece'Z color AN " " AN targetpiece'Z name MKAY
+                                YA RLY, VISIBLE SMOOSH "You selected " AN targetpiece'Z color AN " " AN targetpiece'Z name MKAY
                                 NO WAI, VISIBLE validationmessage
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
@@ -375,7 +375,7 @@ O HAI IM game
                 BTW Get the destination square for the target piece
                 isvalid R FAIL
                 IM IN YR getdestsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
-                    I HAS A destsquare ITZ currentbored IZ getsquare YR "PIECE" MKAY
+                    I HAS A destsquare ITZ currentbored IZ getsquare YR "DESTINATION" MKAY
 
                     BTW Validate the selected square
                     isvalid R WIN
@@ -390,7 +390,7 @@ O HAI IM game
                                 NO WAI, validationmessage R ""
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
-                                YA RLY, VISIBLE SMOOSH "You selected target " AN destsquare'Z color AN " " AN destsquare'Z name MKAY
+                                YA RLY, VISIBLE SMOOSH "You selected square " AN destsquare'Z color AN " " AN destsquare'Z name MKAY
                                 NO WAI, VISIBLE validationmessage
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
