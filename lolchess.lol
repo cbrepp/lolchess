@@ -313,7 +313,12 @@ O HAI IM bored
                 targetsquare HAS A rank ITZ targetrank
                 targetsquare HAS A file ITZ targetfile
                 I HAS A targetpiece ITZ currentbored IZ gettin YR targetsquare MKAY
-                FOUND YR targetpiece
+                I HAS A pieceandsquare ITZ A BUKKIT
+                pieceandsquare HAS A name ITZ targetpiece'Z name
+                pieceandsquare HAS A color ITZ targetpiece'Z color
+                pieceandsquare HAS A rank ITZ targetrank
+                pieceandsquare HAS A file ITZ targetfile
+                FOUND YR pieceandsquare
         OIC
     IF U SAY SO
 KTHX
@@ -344,10 +349,13 @@ O HAI IM game
                 VISIBLE ""
                 VISIBLE SMOOSH "Current turn: " AN playacolor MKAY
 
+                I HAS A targetpiece ITZ A BUKKIT
+                I HAS A destsquare ITZ A BUKKIT
+
                 BTW Get the target square for the piece to move
                 I HAS A isvalid ITZ FAIL
                 IM IN YR gettargetsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
-                    I HAS A targetpiece ITZ currentbored IZ getsquare YR "PIECE" MKAY
+                    targetpiece R currentbored IZ getsquare YR "PIECE" MKAY
 
                     BTW Validate the selected square
                     isvalid R WIN
@@ -375,7 +383,7 @@ O HAI IM game
                 BTW Get the destination square for the target piece
                 isvalid R FAIL
                 IM IN YR getdestsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
-                    I HAS A destsquare ITZ currentbored IZ getsquare YR "DESTINATION" MKAY
+                    destsquare R currentbored IZ getsquare YR "DESTINATION" MKAY
 
                     BTW Validate the selected square
                     isvalid R WIN
@@ -398,11 +406,24 @@ O HAI IM game
                                 NO WAI, isvalid R FAIL
                             OIC
                     OIC
+
+                    BTW TODO - Actually validate the move
                 IM OUTTA YR getdestsquare
 
-                BTW Move the piece from the target square to the destination square
-                BTW TODO - Actually validate the move
-                BTW TODO - We have a targetpiece and a destsquare, but no ranks and files... need those so we can move the piece
+                isvalid, WTF?
+                    OMG WIN
+                        BTW Empty the target square
+                        I HAS A emptypiece ITZ A BUKKIT
+                        emptypiece HAS A color ITZ ""
+                        emptypiece HAS A name ITZ ""
+                        currentbored IZ settin YR targetpiece AN YR emptypiece MKAY
+
+                        BTW Move the target piece to the destination square
+                        currentbored IZ settin YR destsquare AN YR targetpiece MKAY
+                    OMGWTF
+                        VISIBLE "Try again!"
+                    OIC
+
                 BTW TODO - If moving the piece to a square occupied by the king, game over
             IM OUTTA YR playaturn
         IM OUTTA YR gameloop
