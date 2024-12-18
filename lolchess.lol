@@ -10,11 +10,7 @@ VISIBLE "Welcome to lolchess!"
 O HAI IM bored
     I HAS A initflag ITZ 0
 
-    HOW IZ I initialized
-        ME'Z initflag R 1
-		FOUND YR ""
-	IF U SAY SO
-
+	BTW Set a piece on the board
 	HOW IZ I settin YR currentsquare AN YR value
         ME'Z initflag, WTF?
             OMG 0
@@ -28,12 +24,14 @@ O HAI IM bored
         OIC
 	IF U SAY SO
 
+	BTW Get a piece on the board
 	HOW IZ I gettin YR currentsquare
         I HAS A index ITZ SMOOSH "index" AN currentsquare'Z rank AN currentsquare'Z file MKAY
         I HAS A tempval ITZ ME'Z SRS index
 		FOUND YR tempval
 	IF U SAY SO
 
+	BTW Translate piece name to a display value
 	HOW IZ I namecallin YR piecename
         I HAS A name ITZ "      "
         piecename, WTF?
@@ -59,6 +57,7 @@ O HAI IM bored
         FOUND YR name
 	IF U SAY SO
 
+	BTW Translate piece color to a display value
     HOW IZ I colorcodin YR piececolor
         I HAS A color ITZ "      "
         piececolor, WTF?
@@ -72,6 +71,7 @@ O HAI IM bored
         FOUND YR color
 	IF U SAY SO
 
+	BTW Translate file character to a number
     HOW IZ I filin YR file
         I HAS A filenumber ITZ 0
         file, WTF?
@@ -79,154 +79,32 @@ O HAI IM bored
                 filenumber R "1"
                 GTFO
             OMG "b"
-                filenumber R "1"
+                filenumber R "2"
                 GTFO
             OMG "c"
-                filenumber R "1"
+                filenumber R "3"
                 GTFO
             OMG "d"
-                filenumber R "1"
+                filenumber R "4"
                 GTFO
             OMG "e"
-                filenumber R "1"
+                filenumber R "5"
                 GTFO
             OMG "f"
-                filenumber R "1"
+                filenumber R "6"
                 GTFO
             OMG "g"
-                filenumber R "1"
+                filenumber R "7"
                 GTFO
             OMG "h"
-                filenumber R "1"
+                filenumber R "8"
                 GTFO
         OIC
         FOUND YR filenumber
 	IF U SAY SO
-KTHX
 
-I HAS A currentbored ITZ LIEK A bored
-
-IM IN YR initplaya UPPIN YR i TIL BOTH SAEM i AN 2
-    I HAS A currank ITZ 0
-    I HAS A curfile ITZ 0
-    I HAS A curcolor ITZ ""
-    I HAS A curpiece ITZ ""
-
-    i, WTF?
-        OMG 0
-            curcolor R "black"
-            currank R 8
-            GTFO
-        OMG 1
-            curcolor R "white"
-            currank R 1
-            GTFO
-    OIC
-
-    IM IN YR initfirstrank UPPIN YR j TIL BOTH SAEM j AN 8
-        curfile R SUM OF j AN 1
-        j, WTF?
-            OMG 0
-                curpiece R "rook"
-                GTFO
-            OMG 1
-                curpiece R "knight"
-                GTFO
-            OMG 2
-                curpiece R "bishop"
-                GTFO
-            OMG 3
-                curpiece R "queen"
-                GTFO
-            OMG 4
-                curpiece R "king"
-                GTFO
-            OMG 5
-                curpiece R "bishop"
-                GTFO
-            OMG 6
-                curpiece R "knight"
-                GTFO
-            OMG 7
-                curpiece R "rook"
-                GTFO
-        OIC
-
-        I HAS A currentpiece ITZ A BUKKIT
-        currentpiece HAS A color ITZ curcolor
-        currentpiece HAS A name ITZ curpiece
-        BTW VISIBLE SMOOSH "Adding " AN currentpiece'Z color AN " " AN currentpiece'Z name AN " to " AN curfile AN "," AN currank MKAY
-        I HAS A currentsquare ITZ A BUKKIT
-        currentsquare HAS A rank ITZ currank
-        currentsquare HAS A file ITZ curfile
-        currentbored IZ settin YR currentsquare AN YR currentpiece MKAY
-    IM OUTTA YR initfirstrank
-
-    i, WTF?
-        OMG 0
-            currank R 7
-            GTFO
-        OMG 1
-            currank R 2
-            GTFO
-    OIC
-
-    IM IN YR initsecondrank UPPIN YR j TIL BOTH SAEM j AN 8
-        curfile R SUM OF j AN 1
-        curpiece R "pawn"
-
-        I HAS A currentpiece ITZ A BUKKIT
-        currentpiece HAS A color ITZ curcolor
-        currentpiece HAS A name ITZ curpiece
-        BTW VISIBLE SMOOSH "Adding " AN currentpiece'Z color AN " " AN currentpiece'Z name AN " to " AN curfile AN "," AN currank MKAY
-        I HAS A currentsquare ITZ A BUKKIT
-        currentsquare HAS A rank ITZ currank
-        currentsquare HAS A file ITZ curfile
-        currentbored IZ settin YR currentsquare AN YR currentpiece MKAY
-    IM OUTTA YR initsecondrank
-IM OUTTA YR initplaya
-
-IM IN YR initremainingranks UPPIN YR j TIL BOTH SAEM j AN 4
-    I HAS A currank ITZ SUM OF j AN 3
-    IM IN YR initremainingfiles UPPIN YR k TIL BOTH SAEM k AN 8
-        I HAS A curfile ITZ SUM OF k AN 1
-
-        I HAS A currentpiece ITZ A BUKKIT
-        currentpiece HAS A color ITZ ""
-        currentpiece HAS A name ITZ ""
-        I HAS A currentsquare ITZ A BUKKIT
-        currentsquare HAS A rank ITZ currank
-        currentsquare HAS A file ITZ curfile
-        currentbored IZ settin YR currentsquare AN YR currentpiece MKAY
-    IM OUTTA YR initremainingfiles
-IM OUTTA YR initremainingranks
-
-currentbored IZ initialized MKAY
-
-I HAS A gameover ITZ 0
-I HAS A turncount ITZ 0
-I HAS A targetfile ITZ ""
-I HAS A targetrank ITZ ""
-I HAS A destfile ITZ ""
-I HAS A destrank ITZ ""
-
-BTW Move selecting a square into the bored bukkit and act on validation
-BTW Add selecting a destination square
-BTW Add validating each attempted move
-BTW End the game when a king is captured
-IM IN YR gameloop UPPIN YR turncount WILE BOTH SAEM gameover AN 0
-    IM IN YR playaturn UPPIN YR i TIL BOTH SAEM i AN 2
-        I HAS A playacolor ITZ ""
-
-        i, WTF?
-            OMG 0
-                playacolor R "white"
-                GTFO
-            OMG 1
-                playacolor R "black"
-                GTFO
-        OIC
-
+	BTW Show board
+	HOW IZ I sigh
         VISIBLE ""
         VISIBLE "  a      b      c      d      e      f      g      h"
         IM IN YR displayranks UPPIN YR i TIL BOTH SAEM i AN 8
@@ -239,10 +117,10 @@ IM IN YR gameloop UPPIN YR turncount WILE BOTH SAEM gameover AN 0
                 I HAS A currentdispsquare ITZ A BUKKIT
                 currentdispsquare HAS A rank ITZ currank
                 currentdispsquare HAS A file ITZ curfile
-                I HAS A newpiece ITZ currentbored IZ gettin YR currentdispsquare MKAY
-                I HAS A colorname ITZ currentbored IZ colorcodin YR newpiece'Z color MKAY
+                I HAS A newpiece ITZ ME IZ gettin YR currentdispsquare MKAY
+                I HAS A colorname ITZ ME IZ colorcodin YR newpiece'Z color MKAY
                 colorline R SMOOSH colorline AN "|" AN colorname MKAY
-                I HAS A piecename ITZ currentbored IZ namecallin YR newpiece'Z name MKAY
+                I HAS A piecename ITZ ME IZ namecallin YR newpiece'Z name MKAY
                 nameline R SMOOSH nameline AN "|" AN piecename MKAY
             IM OUTTA YR displayfiles
 
@@ -252,70 +130,289 @@ IM IN YR gameloop UPPIN YR turncount WILE BOTH SAEM gameover AN 0
             VISIBLE nameline
         IM OUTTA YR displayranks
         VISIBLE "  a      b      c      d      e      f      g      h"
-        VISIBLE ""
-        VISIBLE SMOOSH "Current turn: " AN playacolor MKAY
-        VISIBLE ""
-        VISIBLE "Enter file (a-h):"
-        GIMMEH targetfile
-        targetfile, WTF?
-            OMG "exit"
-                gameover R 1
-                GTFO
-            OMG "a"
-                GTFO
-            OMG "b"
-                GTFO
-            OMG "c"
-                GTFO
-            OMG "d"
-                GTFO
-            OMG "e"
-                GTFO
-            OMG "f"
-                GTFO
-            OMG "g"
-                GTFO
-            OMG "h"
-                GTFO
-            OMGWTF
-                VISIBLE SMOOSH "'" AN targetfile AN "' is not a valid file!  Enter a valid file or 'exit' to exit." MKAY
-        OIC
+	IF U SAY SO
+
+    BTW Init the game board
+    HOW IZ I setbored
+        IM IN YR initplaya UPPIN YR i TIL BOTH SAEM i AN 2
+            I HAS A currank ITZ 0
+            I HAS A curfile ITZ 0
+            I HAS A curcolor ITZ ""
+            I HAS A curpiece ITZ ""
+
+            i, WTF?
+                OMG 0
+                    curcolor R "black"
+                    currank R 8
+                    GTFO
+                OMG 1
+                    curcolor R "white"
+                    currank R 1
+                    GTFO
+            OIC
+
+            IM IN YR initfirstrank UPPIN YR j TIL BOTH SAEM j AN 8
+                curfile R SUM OF j AN 1
+                j, WTF?
+                    OMG 0
+                        curpiece R "rook"
+                        GTFO
+                    OMG 1
+                        curpiece R "knight"
+                        GTFO
+                    OMG 2
+                        curpiece R "bishop"
+                        GTFO
+                    OMG 3
+                        curpiece R "queen"
+                        GTFO
+                    OMG 4
+                        curpiece R "king"
+                        GTFO
+                    OMG 5
+                        curpiece R "bishop"
+                        GTFO
+                    OMG 6
+                        curpiece R "knight"
+                        GTFO
+                    OMG 7
+                        curpiece R "rook"
+                        GTFO
+                OIC
+
+                I HAS A currentpiece ITZ A BUKKIT
+                currentpiece HAS A color ITZ curcolor
+                currentpiece HAS A name ITZ curpiece
+                BTW VISIBLE SMOOSH "Adding " AN currentpiece'Z color AN " " AN currentpiece'Z name AN " to " AN curfile AN "," AN currank MKAY
+                I HAS A currentsquare ITZ A BUKKIT
+                currentsquare HAS A rank ITZ currank
+                currentsquare HAS A file ITZ curfile
+                ME IZ settin YR currentsquare AN YR currentpiece MKAY
+            IM OUTTA YR initfirstrank
+
+            i, WTF?
+                OMG 0
+                    currank R 7
+                    GTFO
+                OMG 1
+                    currank R 2
+                    GTFO
+            OIC
+
+            IM IN YR initsecondrank UPPIN YR j TIL BOTH SAEM j AN 8
+                curfile R SUM OF j AN 1
+                curpiece R "pawn"
+
+                I HAS A currentpiece ITZ A BUKKIT
+                currentpiece HAS A color ITZ curcolor
+                currentpiece HAS A name ITZ curpiece
+                BTW VISIBLE SMOOSH "Adding " AN currentpiece'Z color AN " " AN currentpiece'Z name AN " to " AN curfile AN "," AN currank MKAY
+                I HAS A currentsquare ITZ A BUKKIT
+                currentsquare HAS A rank ITZ currank
+                currentsquare HAS A file ITZ curfile
+                ME IZ settin YR currentsquare AN YR currentpiece MKAY
+            IM OUTTA YR initsecondrank
+        IM OUTTA YR initplaya
+
+        IM IN YR initremainingranks UPPIN YR j TIL BOTH SAEM j AN 4
+            I HAS A currank ITZ SUM OF j AN 3
+            IM IN YR initremainingfiles UPPIN YR k TIL BOTH SAEM k AN 8
+                I HAS A curfile ITZ SUM OF k AN 1
+
+                I HAS A currentpiece ITZ A BUKKIT
+                currentpiece HAS A color ITZ ""
+                currentpiece HAS A name ITZ ""
+                I HAS A currentsquare ITZ A BUKKIT
+                currentsquare HAS A rank ITZ currank
+                currentsquare HAS A file ITZ curfile
+                ME IZ settin YR currentsquare AN YR currentpiece MKAY
+            IM OUTTA YR initremainingfiles
+        IM OUTTA YR initremainingranks
+
+        ME'Z initflag R 1
+    IF U SAY SO
+
+    BTW Get a target square from the user
+    HOW IZ I getsquare YR description
+        I HAS A goawaynow ITZ 0
+
+        BTW Get a valid target file from the user
+        I HAS A trashinput ITZ 1
+        IM IN YR getvalidinput UPPIN YR x WILE DIFF OF trashinput AN goawaynow
+            VISIBLE ""
+            VISIBLE SMOOSH "Enter " AN description AN " file (a-h) or 'exit': " MKAY
+            GIMMEH targetfile
+            trashinput R 0
+            targetfile, WTF?
+                OMG "exit"
+                    trashinput R 1
+                    goawaynow R 1
+                    GTFO
+                OMG "a"
+                    GTFO
+                OMG "b"
+                    GTFO
+                OMG "c"
+                    GTFO
+                OMG "d"
+                    GTFO
+                OMG "e"
+                    GTFO
+                OMG "f"
+                    GTFO
+                OMG "g"
+                    GTFO
+                OMG "h"
+                    GTFO
+                OMGWTF
+                    trashinput R 1
+                    VISIBLE SMOOSH "'" AN targetfile AN "' is not a valid file!  Try again." MKAY
+            OIC
+        IM OUTTA YR getvalidinput
         targetfile R currentbored IZ filin YR targetfile MKAY
-        VISIBLE "Enter rank (1-8):"
-        GIMMEH targetrank
-        targetrank, WTF?
-            OMG "exit"
-                gameover R 1
-                GTFO
-            OMG "1"
-                GTFO
-            OMG "2"
-                GTFO
-            OMG "3"
-                GTFO
-            OMG "4"
-                GTFO
-            OMG "5"
-                GTFO
-            OMG "6"
-                GTFO
-            OMG "7"
-                GTFO
-            OMG "8"
-                GTFO
-            OMGWTF
-                VISIBLE SMOOSH "'" AN targetrank AN "' is not a valid rank!  Enter a valid rank or 'exit' to exit." MKAY
+
+        BTW Get a valid target rank from the user
+        trashinput R 1
+        IM IN YR getvalidinput UPPIN YR x WILE DIFF OF trashinput AN goawaynow
+            VISIBLE ""
+            VISIBLE SMOOSH "Enter " AN description AN " rank (1-8) or 'exit': " MKAY
+            GIMMEH targetrank
+            trashinput R 0
+            targetrank, WTF?
+                OMG "exit"
+                    trashinput R 1
+                    goawaynow R 1
+                    GTFO
+                OMG "1"
+                    GTFO
+                OMG "2"
+                    GTFO
+                OMG "3"
+                    GTFO
+                OMG "4"
+                    GTFO
+                OMG "5"
+                    GTFO
+                OMG "6"
+                    GTFO
+                OMG "7"
+                    GTFO
+                OMG "8"
+                    GTFO
+                OMGWTF
+                    trashinput R 1
+                    VISIBLE SMOOSH "'" AN targetrank AN "' is not a valid rank!  Try again." MKAY
+            OIC
+        IM OUTTA YR getvalidinput
+
+        goawaynow, O RLY?
+            YA RLY
+                FOUND YR "goawaynow"
+            NO WAI
+                I HAS A targetsquare ITZ A BUKKIT
+                targetsquare HAS A rank ITZ targetrank
+                targetsquare HAS A file ITZ targetfile
+                I HAS A targetpiece ITZ currentbored IZ gettin YR targetsquare MKAY
+                FOUND YR targetpiece
         OIC
-        I HAS A targetsquare ITZ A BUKKIT
-        targetsquare HAS A rank ITZ targetrank
-        targetsquare HAS A file ITZ targetfile
-        I HAS A targetpiece ITZ currentbored IZ gettin YR targetsquare MKAY
-        VISIBLE ""
-        BOTH SAEM targetpiece'Z color AN playacolor, O RLY?
-            YA RLY, VISIBLE SMOOSH "You selected target " AN targetpiece'Z color AN " " AN targetpiece'Z name MKAY
-            NO WAI, VISIBLE "You selected the wrong square!"
-        OIC
-    IM OUTTA YR playaturn
-IM OUTTA YR gameloop
+    IF U SAY SO
+KTHX
+
+O HAI IM game
+    I HAS A gameover ITZ 0
+    I HAS A turncount ITZ 0
+
+    BTW Main game loop
+    HOW IZ I letsgo YR currentbored
+        I HAS A targetfile ITZ ""
+        I HAS A targetrank ITZ ""
+
+        IM IN YR gameloop UPPIN YR turncount WILE BOTH SAEM ME'Z gameover AN 0
+            IM IN YR playaturn UPPIN YR i TIL BOTH SAEM i AN 2
+                I HAS A playacolor ITZ ""
+
+                i, WTF?
+                    OMG 0
+                        playacolor R "white"
+                        GTFO
+                    OMG 1
+                        playacolor R "black"
+                        GTFO
+                OIC
+
+                currentbored IZ sigh MKAY
+                VISIBLE ""
+                VISIBLE SMOOSH "Current turn: " AN playacolor MKAY
+
+                BTW Get the target square for the piece to move
+                I HAS A isvalid ITZ FAIL
+                IM IN YR gettargetsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
+                    I HAS A targetpiece ITZ currentbored IZ getsquare YR "PIECE" MKAY
+
+                    BTW Validate the selected square
+                    isvalid R WIN
+                    targetpiece, WTF?
+                        OMG "goawaynow"
+                            gameover R 1
+                            GTFO
+                        OMGWTF
+                            I HAS A validationmessage ITZ ""
+                            BOTH SAEM targetpiece'Z color AN playacolor, O RLY?
+                                YA RLY, validationmessage R ""
+                                NO WAI, validationmessage R SMOOSH "You need to select a square with a " playacolor " piece!" MKAY
+                            OIC
+                            BOTH SAEM validationmessage "", O RLY?
+                                YA RLY, VISIBLE SMOOSH "You selected target " AN targetpiece'Z color AN " " AN targetpiece'Z name MKAY
+                                NO WAI, VISIBLE validationmessage
+                            OIC
+                            BOTH SAEM validationmessage "", O RLY?
+                                YA RLY, isvalid R WIN
+                                NO WAI, isvalid R FAIL
+                            OIC
+                    OIC
+                IM OUTTA YR gettargetsquare
+
+                BTW Get the destination square for the target piece
+                isvalid R FAIL
+                IM IN YR getdestsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
+                    I HAS A destsquare ITZ currentbored IZ getsquare YR "PIECE" MKAY
+
+                    BTW Validate the selected square
+                    isvalid R WIN
+                    destsquare, WTF?
+                        OMG "goawaynow"
+                            gameover R 1
+                            GTFO
+                        OMGWTF
+                            I HAS A validationmessage ITZ ""
+                            BOTH SAEM destsquare'Z color AN playacolor, O RLY?
+                                YA RLY, validationmessage R SMOOSH "You can NOT select a square with a " playacolor " piece!" MKAY
+                                NO WAI, validationmessage R ""
+                            OIC
+                            BOTH SAEM validationmessage "", O RLY?
+                                YA RLY, VISIBLE SMOOSH "You selected target " AN destsquare'Z color AN " " AN destsquare'Z name MKAY
+                                NO WAI, VISIBLE validationmessage
+                            OIC
+                            BOTH SAEM validationmessage "", O RLY?
+                                YA RLY, isvalid R WIN
+                                NO WAI, isvalid R FAIL
+                            OIC
+                    OIC
+                IM OUTTA YR getdestsquare
+
+                BTW Move the piece from the target square to the destination square
+                BTW TODO - Actually validate the move
+                BTW TODO - We have a targetpiece and a destsquare, but no ranks and files... need those so we can move the piece
+                BTW TODO - If moving the piece to a square occupied by the king, game over
+            IM OUTTA YR playaturn
+        IM OUTTA YR gameloop
+    IF U SAY SO
+KTHX
+
+I HAS A currentbored ITZ LIEK A bored
+I HAS A match ITZ LIEK A game
+currentbored IZ setbored MKAY
+match IZ letsgo YR currentbored MKAY
+BTW TODO - Get the winning playa from letsgo and announce it here?
 
 KTHXBYE
