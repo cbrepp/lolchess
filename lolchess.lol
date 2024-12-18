@@ -353,15 +353,15 @@ O HAI IM game
                 I HAS A destsquare ITZ A BUKKIT
 
                 BTW Get the target square for the piece to move
-                I HAS A isvalid ITZ FAIL
-                IM IN YR gettargetsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
+                I HAS A isvalid ITZ 0
+                IM IN YR gettargetsquare UPPIN YR x WILE BOTH SAEM isvalid AN 0
                     targetpiece R currentbored IZ getsquare YR "PIECE" MKAY
 
                     BTW Validate the selected square
-                    isvalid R WIN
+                    isvalid R 1
                     targetpiece, WTF?
                         OMG "goawaynow"
-                            gameover R 1
+                            ME'Z gameover R 1
                             GTFO
                         OMGWTF
                             I HAS A validationmessage ITZ ""
@@ -374,22 +374,22 @@ O HAI IM game
                                 NO WAI, VISIBLE validationmessage
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
-                                YA RLY, isvalid R WIN
-                                NO WAI, isvalid R FAIL
+                                YA RLY, isvalid R 1
+                                NO WAI, isvalid R 0
                             OIC
                     OIC
                 IM OUTTA YR gettargetsquare
 
                 BTW Get the destination square for the target piece
-                isvalid R FAIL
-                IM IN YR getdestsquare UPPIN YR x WILE BOTH SAEM isvalid AN FAIL
+                isvalid R ME'Z gameover
+                IM IN YR getdestsquare UPPIN YR x WILE BOTH SAEM isvalid AN 0
                     destsquare R currentbored IZ getsquare YR "DESTINATION" MKAY
 
                     BTW Validate the selected square
-                    isvalid R WIN
+                    isvalid R 1
                     destsquare, WTF?
                         OMG "goawaynow"
-                            gameover R 1
+                            ME'Z gameover R 1
                             GTFO
                         OMGWTF
                             I HAS A validationmessage ITZ ""
@@ -402,16 +402,24 @@ O HAI IM game
                                 NO WAI, VISIBLE validationmessage
                             OIC
                             BOTH SAEM validationmessage "", O RLY?
-                                YA RLY, isvalid R WIN
-                                NO WAI, isvalid R FAIL
+                                YA RLY, isvalid R 1
+                                NO WAI, isvalid R 0
                             OIC
                     OIC
 
                     BTW TODO - Actually validate the move
                 IM OUTTA YR getdestsquare
 
+                ME'Z gameover, WTF?
+                    OMG 1
+                       isvalid R 0
+                       i R 1
+                       VISIBLE ""
+                       VISIBLE "Game over"
+                OIC
+
                 isvalid, WTF?
-                    OMG WIN
+                    OMG 1
                         BTW Empty the target square
                         I HAS A emptypiece ITZ A BUKKIT
                         emptypiece HAS A color ITZ ""
@@ -420,11 +428,20 @@ O HAI IM game
 
                         BTW Move the target piece to the destination square
                         currentbored IZ settin YR destsquare AN YR targetpiece MKAY
-                    OMGWTF
-                        VISIBLE "Try again!"
-                    OIC
 
-                BTW TODO - If moving the piece to a square occupied by the king, game over
+                        BTW If the other playa's king was removed, game over
+                        BOTH SAEM destsquare'Z name AN "king", O RLY?
+                            YA RLY, ME'Z gameover R 1
+                            NO WAI, ME'Z gameover R 0
+                        OIC
+                OIC
+
+                SUM OF ME'Z gameover AN isvalid, WTF?
+                    OMG 2
+                        VISIBLE ""
+                        VISIBLE SMOOSH playacolor AN " wins after " AN SUM OF turncount AN 1 AN " turn(s)!!!" MKAY
+                        i R 1
+                OIC
             IM OUTTA YR playaturn
         IM OUTTA YR gameloop
     IF U SAY SO
@@ -434,6 +451,5 @@ I HAS A currentbored ITZ LIEK A bored
 I HAS A match ITZ LIEK A game
 currentbored IZ setbored MKAY
 match IZ letsgo YR currentbored MKAY
-BTW TODO - Get the winning playa from letsgo and announce it here?
 
 KTHXBYE
